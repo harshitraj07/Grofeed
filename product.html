@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products</title>
   <link rel="shortcut icon" href="https://i.postimg.cc/T1NwjKtS/product.png" type="image/x-icon">
+
   <style>
     * {
       margin: 0;
@@ -15,12 +16,18 @@
     }
 
     body {
+      background: linear-gradient(to Right, #f0f4ff, #e0e7ff);
+
+    }
+
+    .mainContainer {
       display: flex;
       flex-direction: row;
       height: 100vh;
       overflow: hidden;
 
     }
+
 
     .sidebar {
       margin-top: 80px;
@@ -69,11 +76,9 @@
     }
 
     .menu-toggle {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 
-      position: fixed;
-      top: 15px;
-      left: 15px;
+
       background-color: #fff;
       color: #000;
       padding: 15px;
@@ -118,7 +123,6 @@
 
     .main {
       flex: 1;
-      background-color: #f5f5f5;
       overflow-y: auto;
       margin: 0;
       padding: 20px;
@@ -130,13 +134,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 24px;
+      padding: 12px 20px;
       background-color: #ffffff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-      position: sticky;
+      /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+      position: fixed;
+      width: 100vw;
       top: 0;
       z-index: 1000;
-      border-radius: 30px;
+      /* margin-left: -20px; */
+
+      /* border-radius: 30px; */
     }
 
     .header-left {
@@ -155,6 +162,7 @@
       font-size: 1.1rem;
       font-weight: 500;
       color: #333;
+      margin-top: 6rem;
     }
 
     .profile {
@@ -242,7 +250,6 @@
       .main {
 
         padding: 20px;
-        overflow: hidden;
       }
 
       .sidebar ul {
@@ -332,8 +339,8 @@
     }
 
 
-
     h1 {
+      margin-top: 5rem;
       padding-top: 1rem;
       text-align: center;
       margin-bottom: 20px;
@@ -521,7 +528,7 @@
 
     .toggle-buttons button {
       padding: 0.5rem 1rem;
-      background-color: #4f46e5;
+      background: linear-gradient(90deg, #FF6B6B 14.9%, #FF8E53 84.62%) !important;
       color: white;
       border: none;
       border-radius: 6px;
@@ -666,51 +673,53 @@
 </head>
 
 <body>
-  <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+  <div class="header">
+    <div class="header-left">
+      <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
 
-  <div class="sidebar" id="sidebar">
-    <ul class="sidebar-menu">
-      <li><a href="index.html"><img src="https://i.postimg.cc/c4JtKSF2/dashboard.png" alt=""><span
-            class="menu-text">Dashboard</span></a>
-      </li>
-      <li><a href="product.html"><img src="https://i.postimg.cc/T1NwjKtS/product.png" alt=""><span
-            class="menu-text">Products</span> </a></li>
-      <li><a href="orderList.html"><img src="https://i.postimg.cc/QCdCWQJ1/orderlist.png" alt=""><span
-            class="menu-text">Order List</span> </a></li>
-      <li><a href="beneficiary.html"><img src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt=""><span
-            class="menu-text">Beneficiary</span> </a></li>
-      <li><a href="coinsWallet.html"><img src="https://i.postimg.cc/mkLzyfBc/coins-Wallet.png" alt=""> <span
-            class="menu-text">Coins Wallet</span></a></li>
-      <li><a href="connectFeed.html"><img src="https://i.postimg.cc/4NF7VSMd/connectfeed.png" alt=""> <span
-            class="menu-text">ConnectFeed</span></a></li>
-      <li><a href="Integration.html"><img src="https://i.postimg.cc/vZg1zvFv/integration.png" alt=""><span
-            class="menu-text">Integration</span> </a></li>
-      <li><a href="leadLinkWay.html"><img src="https://i.postimg.cc/hGVXFPGz/leadlinkway.png" alt=""> <span
-            class="menu-text">LeadLinkWay</span></a></li>
-      <li><a href="academy.html"><img src="https://i.postimg.cc/hjbQmPWW/academy.png" alt=""><span class="menu-text">Academy</span>
-        </a></li>
-      <li><a href="setting.html"><img src="https://i.postimg.cc/CxX8TQHt/settings-1.png" alt=""><span
-            class="menu-text">Setting</span> </a></li>
-
-    </ul>
-  </div>
-  <div class="main">
-    <div class="header">
-      <div class="header-left">
-
-        <img class="companylogo" src="https://i.postimg.cc/Y2Rmq9zQ/companylogo.webp" alt="">
-        <div class="creatorName">Welcome, Amit 👋</div>
-      </div>
-
-
-      <div class="profile">
-
-        <img class="Creator-profile" src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt="">
-
-        <span>🔔</span>
-
-      </div>
+      <img class="companylogo" src="https://i.postimg.cc/Y2Rmq9zQ/companylogo.webp" alt="">
     </div>
+
+
+    <div class="profile">
+
+      <img class="Creator-profile" src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt="">
+
+      <span>🔔</span>
+
+    </div>
+  </div>
+  <div class="mainContainer">
+    <div class="sidebar" id="sidebar">
+      <ul class="sidebar-menu">
+        <li><a href="index.html"><img src="https://i.postimg.cc/c4JtKSF2/dashboard.png" alt=""><span
+              class="menu-text">Dashboard</span></a>
+        </li>
+        <li><a href="product.html"><img src="https://i.postimg.cc/T1NwjKtS/product.png" alt=""><span
+              class="menu-text">Products</span> </a></li>
+        <li><a href="orderList.html"><img src="https://i.postimg.cc/QCdCWQJ1/orderlist.png" alt=""><span
+              class="menu-text">Order List</span> </a></li>
+        <li><a href="beneficiary.html"><img src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt=""><span
+              class="menu-text">Beneficiary</span> </a></li>
+        <li><a href="coinsWallet.html"><img src="https://i.postimg.cc/mkLzyfBc/coins-Wallet.png" alt=""> <span
+              class="menu-text">Coins Wallet</span></a></li>
+        <li><a href="connectFeed.html"><img src="https://i.postimg.cc/4NF7VSMd/connectfeed.png" alt=""> <span
+              class="menu-text">ConnectFeed</span></a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/vZg1zvFv/integration.png" alt=""><span
+              class="menu-text">Integration</span> </a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/hGVXFPGz/leadlinkway.png" alt=""> <span
+              class="menu-text">LeadLinkWay</span></a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/hjbQmPWW/academy.png" alt=""><span
+              class="menu-text">Academy</span> </a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/CxX8TQHt/settings-1.png" alt=""><span
+              class="menu-text">Setting</span> </a></li>
+
+      </ul>
+    </div>
+
+
+   <div class="main">
+    
 
     <h1>Influencer’s Product List</h1>
 
@@ -817,8 +826,10 @@
 
         <div class="review-list" id="reviewList"></div>
       </section>
+      
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <script>
       window.addEventListener('DOMContentLoaded', () => {
@@ -1145,6 +1156,10 @@
       });
 
       renderReviews(reviews); // Initial render
+
+
+
+
     </script>
 
 </body>
