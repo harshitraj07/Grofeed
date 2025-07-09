@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benificiary</title>
+  <link rel="shortcut icon" href="https://i.postimg.cc/7hKCBsZK/beneficiary.png" type="image/x-icon">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to Right, #f0f4ff, #e0e7ff);
+
+    }
+
+
+
+    .mainContainer {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      overflow: hidden;
+
+    }
+
+
+    .sidebar {
+      margin-top: 80px;
+      width: 200px;
+      background-color: #ffffff37;
+      padding: 15px;
+    }
+
+
+
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      /* text-align: center; */
+    }
+
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+
+    .sidebar ul li a {
+      color: gray;
+      text-decoration: none;
+    }
+
+    .sidebar ul li a:hover {
+      color: #5050B2;
+    }
+
+    .sidebar-menu a.active {
+      background: #508eb2;
+      color: white;
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .sidebar-menu img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .menu-toggle {
+      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+
+
+      background-color: #fff;
+      color: #000;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 1001;
+      /* will be shown on small screens */
+    }
+
+
+    /* Sidebar default styles */
+    .sidebar {
+      width: 200px;
+      background-color: #fff;
+      padding: 15px;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    /* Collapsed Sidebar (for large screen toggle) */
+    .sidebar.collapsed {
+      width: 70px;
+
+    }
+
+    .sidebar.collapsed .menu-text {
+      display: none;
+    }
+
+    .sidebar-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-menu img {
+      width: 30px;
+      height: 30px;
+      margin-right: 12px;
+    }
+
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      margin: 0;
+      padding: 20px;
+      padding-top: 0;
+    }
+
+    /* Base styles */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background-color: #ffffff;
+      /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+      position: fixed;
+      width: 100vw;
+      top: 0;
+      z-index: 1000;
+      /* margin-left: -20px; */
+
+      /* border-radius: 30px; */
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .companylogo {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .creatorName {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #333;
+      margin-top: 6rem;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .Creator-profile {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        height: auto;
+        overflow: auto;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        /* left: -100%; */
+        width: 200px;
+        height: 100%;
+        z-index: 1000;
+        /* background-color: white; */
+        transition: left 0.3s ease;
+      }
+
+      .sidebar ul li {
+        margin: 10px;
+      }
+
+      .collapsed,
+      .active {
+        display: none;
+      }
+
+      .main {
+        margin-left: 0px;
+        padding-left: 0px;
+      }
+
+      .header {
+        /* flex-direction: column; */
+        align-items: flex-start;
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .header-left,
+      .profile {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .creatorName {
+        font-size: 1rem;
+      }
+
+      .profile {
+        justify-content: flex-end;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        /* left: -100%; */
+        width: 200px;
+        height: 100%;
+        z-index: 1000;
+        /* background-color: white; */
+        transition: left 0.3s ease;
+      }
+
+
+
+      .main {
+
+        padding: 20px;
+      }
+
+      .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar ul li {
+        margin: 5px;
+      }
+
+      .creatorName {
+        font-size: 0.95rem;
+      }
+
+      .companylogo {
+        height: 32px;
+      }
+
+      .Creator-profile {
+        height: 36px;
+        width: 36px;
+      }
+
+      .profile span {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .companylogo {
+        padding-left: 20px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        /* left: -100%; */
+        width: 200px;
+        height: 100%;
+        z-index: 1000;
+        /* background-color: white; */
+        transition: left 0.3s ease;
+
+
+      }
+
+
+      .main {
+        padding: 20px;
+        /* margin-left: 60px; */
+
+      }
+
+      /* Show sidebar */
+      .sidebar.active {
+        left: 0;
+      }
+
+      /* Optional: If you want small version (like mini menu) */
+      .sidebar.collapsed {
+        width: 60px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+
+      .sidebar.collapsed .sidebar-menu a {
+        display: none;
+        background: none;
+
+      }
+
+      .collapsed,
+      .active {
+        display: none;
+      }
+
+    }
+
+
+    .summary-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+      margin-top: 2rem;
+    }
+
+    .summary-box {
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(to bottom, #fff, #dbefff);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      align-items: center;
+      gap: 0.8rem;
+      transition: all 0.3s ease;
+      border-left: 4px solid #2563eb;
+    }
+
+    .summary-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+
+    .summary-box h2 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      opacity: 0.95;
+      margin-bottom: 8px;
+    }
+
+    .summary-box p {
+      font-size: 28px;
+      font-weight: 700;
+      margin-top: 4px;
+      color: rgba(0, 0, 255, 0.764);
+
+    }
+
+    /* Total Beneficiaries - Soft Violet Gradient */
+    #totalBeneficiaries {
+      background: linear-gradient(to bottom, #fff, #dbefff);
+      /* Violet theme */
+    }
+
+    /* Total Influencers - Teal-Green Gradient */
+    #totalInfluencers {
+      background: linear-gradient(to bottom, #fff, #dbefff);
+    }
+
+    /* Total Sellers - Orange Coral Gradient */
+    #totalSellers {
+      background: linear-gradient(to bottom, #fff, #dbefff);
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+      gap: 10px;
+    }
+
+    .search-filter {
+      display: flex;
+      flex: 1;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .search-filter input,
+    .search-filter select {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      min-width: 150px;
+    }
+
+    #searchInput {
+      max-width: 10rem;
+    }
+
+
+
+
+    .add-btn {
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    .toggle-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .toggle-buttons button {
+      padding: 10px 20px;
+      border: none;
+      background: #ddd;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .toggle-buttons button.active {
+      background-color: #4f46e5;
+      color: white;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+    }
+
+    th,
+    td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #f1f1f1;
+    }
+
+    td button {
+      margin-right: 5px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .edit-btn {
+      background-color: #4f46e5;
+      color: white;
+    }
+
+    .delete-btn {
+      background-color: #4f46e5;
+      color: white;
+    }
+
+    .info-btn {
+      background-color: #2196f3;
+      color: white;
+    }
+
+    .save-btn {
+      background-color: #4f46e5;
+      color: white;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+      }
+
+      .add-btn {
+        padding: 10px 15px;
+
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-left">
+      <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+      <img class="companylogo" src="https://i.postimg.cc/Y2Rmq9zQ/companylogo.webp" alt="">
+    </div>
+
+
+    <div class="profile">
+
+      <img class="Creator-profile" src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt="">
+
+      <span>🔔</span>
+
+    </div>
+  </div>
+  <div class="mainContainer">
+    <div class="sidebar" id="sidebar">
+      <ul class="sidebar-menu">
+        <li><a href="dashboard.html"><img src="https://i.postimg.cc/c4JtKSF2/dashboard.png" alt=""><span
+              class="menu-text">Dashboard</span></a>
+        </li>
+        <li><a href="product.html"><img src="https://i.postimg.cc/T1NwjKtS/product.png" alt=""><span
+              class="menu-text">Products</span> </a></li>
+        <li><a href="orderList.html"><img src="https://i.postimg.cc/QCdCWQJ1/orderlist.png" alt=""><span
+              class="menu-text">Order List</span> </a></li>
+        <li><a href="beneficiary.html"><img src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt=""><span
+              class="menu-text">Beneficiary</span> </a></li>
+        <li><a href="coinsWallet.html"><img src="https://i.postimg.cc/mkLzyfBc/coins-Wallet.png" alt=""> <span
+              class="menu-text">Coins Wallet</span></a></li>
+        <li><a href="connectFeed.html"><img src="https://i.postimg.cc/4NF7VSMd/connectfeed.png" alt=""> <span
+              class="menu-text">ConnectFeed</span></a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/vZg1zvFv/integration.png" alt=""><span
+              class="menu-text">Integration</span> </a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/hGVXFPGz/leadlinkway.png" alt=""> <span
+              class="menu-text">LeadLinkWay</span></a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/hjbQmPWW/academy.png" alt=""><span
+              class="menu-text">Academy</span> </a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/CxX8TQHt/settings-1.png" alt=""><span
+              class="menu-text">Setting</span> </a></li>
+
+      </ul>
+    </div>
+
+
+    <div class="main">
+      <div class="creatorName">Welcome, Amit 👋</div>
+      <section class="summary-section">
+        <div class="summary-box" id="totalBeneficiaries">
+          <h2>Total Beneficiaries</h2>
+          <p>0</p>
+        </div>
+        <div class="summary-box" id="totalInfluencers">
+          <h2>Total Influencers</h2>
+          <p>0</p>
+        </div>
+        <div class="summary-box" id="totalSellers">
+          <h2>Total Sellers</h2>
+          <p>0</p>
+        </div>
+      </section>
+
+      <div class="top-bar">
+        <div class="search-filter">
+          <input type="text" id="searchInput" placeholder="Search by name..." />
+          <select id="filterSelect">
+            <option value="">All</option>
+            <option value="influencer">Influencer</option>
+            <option value="seller">Seller</option>
+          </select>
+        </div>
+        <button class="add-btn" onclick="showAddForm()">+ Add Beneficiary</button>
+      </div>
+
+      <div class="toggle-buttons">
+        <button id="influencerBtn" class="active">Influencer</button>
+        <button id="sellerBtn">Seller</button>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="beneficiaryTable">
+          <thead>
+            <tr>
+              <th>Beneficiary ID</th>
+              <th>Name</th>
+              <th>Date Added</th>
+              <th>Phone No.</th>
+              <th>UPI</th>
+              <th>Account No.</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Dynamic Rows -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('.sidebar-menu a');
+      const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        const page = href?.split('/').pop()?.replace('.html', '');
+        if (page === currentPage) {
+          link.classList.add('active');
+        }
+      });
+
+      // Sidebar toggle logic
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.querySelector('.menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('collapsed');
+          if (window.innerWidth <= 1024) {
+            sidebar.classList.toggle('active');
+          }
+        });
+      });
+
+
+
+
+
+    });
+
+
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+
+      if (window.innerWidth <= 1024) {
+        sidebar.classList.toggle('active');
+      }
+    }
+
+
+    function updateSummaryBoxes() {
+      document.getElementById("totalBeneficiaries").querySelector("p").innerText =
+        influencerData.length + sellerData.length;
+      document.getElementById("totalInfluencers").querySelector("p").innerText =
+        influencerData.length;
+      document.getElementById("totalSellers").querySelector("p").innerText =
+        sellerData.length;
+    }
+
+
+
+
+
+    let influencerData = [
+      { id: "INF001", name: "Riya Sharma", date: "2025-06-01", phone: "9876543210", upi: "riya@upi", account: "1234567890" },
+      { id: "INF002", name: "Rahul Verma", date: "2025-06-03", phone: "9123456789", upi: "rahul@upi", account: "0987654321" },
+      { id: "INF003", name: "Anjali Mehta", date: "2025-06-04", phone: "9988776655", upi: "anjali@upi", account: "1122334455" },
+      { id: "INF004", name: "Suresh Kumar", date: "2025-06-05", phone: "9876543210", upi: "suresh@upi", account: "2233445566" },
+      { id: "INF005", name: "Priya Gupta", date: "2025-06-06", phone: "8765432109", upi: "priya@upi", account: "3344556677" }
+    ];
+    let sellerData = [
+      { id: "SEL001", name: "Vikram Singh", date: "2025-06-02", phone: "9812345678", upi: "vikram@upi", account: "1122334455" },
+      { id: "SEL002", name: "Sneha Patel", date: "2025-06-07", phone: "9988776655", upi: "sneha@upi", account: "2233445566" },
+      { id: "SEL003", name: "Amit Yadav", date: "2025-06-08", phone: "9876543210", upi: "amit@upi", account: "3344556677" },
+      { id: "SEL004", name: "Neha Agarwal", date: "2025-06-09", phone: "8765432109", upi: "neha@upi", account: "4455667788" },
+      { id: "SEL005", name: "Rajesh Sharma", date: "2025-06-10", phone: "7654321098", upi: "rajesh@upi", account: "5566778899" }
+    ];
+
+    let currentType = "influencer"; // or 'seller'
+    const tableBody = document.getElementById("tableBody");
+    const influencerBtn = document.getElementById("influencerBtn");
+    const sellerBtn = document.getElementById("sellerBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    function renderTable(data) {
+      tableBody.innerHTML = '';
+      data.forEach((item, index) => {
+        const row = `
+          <tr>
+            <td>${item.id}</td>
+            <td>${item.name}</td>
+            <td>${item.date}</td>
+            <td>${item.phone}</td>
+            <td>${item.upi}</td>
+            <td>${item.account}</td>
+            <td>
+              <button class="edit-btn" onclick="editRow(${index})">Edit</button>
+              <button class="delete-btn" onclick="deleteRow(${index})">Delete</button>
+            </td>
+          </tr>`;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    function showAddForm() {
+      tableBody.insertAdjacentHTML('afterbegin', `
+        <tr id="addRow">
+          <td><input type="text" id="newId" placeholder="ID" /></td>
+          <td><input type="text" id="newName" placeholder="Name" /></td>
+          <td><input type="date" id="newDate" /></td>
+          <td><input type="tel" id="newPhone" placeholder="Phone" /></td>
+          <td><input type="text" id="newUpi" placeholder="UPI" /></td>
+          <td><input type="text" id="newAccount" placeholder="Account" /></td>
+          <td>
+            <button class="save-btn" onclick="addNew()">Save</button>
+          </td>
+        </tr>
+      `);
+    }
+
+    function addNew() {
+      const newRow = {
+        id: document.getElementById("newId").value,
+        name: document.getElementById("newName").value,
+        date: document.getElementById("newDate").value,
+        phone: document.getElementById("newPhone").value,
+        upi: document.getElementById("newUpi").value,
+        account: document.getElementById("newAccount").value
+      };
+      if (currentType === "influencer") influencerData.unshift(newRow);
+      else sellerData.unshift(newRow);
+      renderTable(currentType === "influencer" ? influencerData : sellerData);
+      updateSummaryBoxes();
+    }
+
+    function editRow(index) {
+      const data = currentType === "influencer" ? influencerData : sellerData;
+      const row = tableBody.rows[index];
+      const item = data[index];
+
+      row.innerHTML = `
+        <td><input value="${item.id}" /></td>
+        <td><input value="${item.name}" /></td>
+        <td><input type="date" value="${item.date}" /></td>
+        <td><input value="${item.phone}" /></td>
+        <td><input value="${item.upi}" /></td>
+        <td><input value="${item.account}" /></td>
+        <td><button class="save-btn" onclick="saveEdit(${index})">Save</button></td>
+      `;
+    }
+
+    function saveEdit(index) {
+      const row = tableBody.rows[index];
+      const inputs = row.querySelectorAll('input');
+
+      const newData = {
+        id: inputs[0].value,
+        name: inputs[1].value,
+        date: inputs[2].value,
+        phone: inputs[3].value,
+        upi: inputs[4].value,
+        account: inputs[5].value
+      };
+
+      if (currentType === "influencer") influencerData[index] = newData;
+      else sellerData[index] = newData;
+
+      renderTable(currentType === "influencer" ? influencerData : sellerData);
+      updateSummaryBoxes();
+    }
+
+    function deleteRow(index) {
+      if (currentType === "influencer") influencerData.splice(index, 1);
+      else sellerData.splice(index, 1);
+      renderTable(currentType === "influencer" ? influencerData : sellerData);
+      updateSummaryBoxes();
+
+    }
+
+    influencerBtn.addEventListener("click", () => {
+      currentType = "influencer";
+      influencerBtn.classList.add("active");
+      sellerBtn.classList.remove("active");
+      renderTable(influencerData);
+    });
+
+    sellerBtn.addEventListener("click", () => {
+      currentType = "seller";
+      sellerBtn.classList.add("active");
+      influencerBtn.classList.remove("active");
+      renderTable(sellerData);
+    });
+
+    searchInput.addEventListener("input", () => {
+      const data = currentType === "influencer" ? influencerData : sellerData;
+      const keyword = searchInput.value.toLowerCase();
+      const filtered = data.filter(d => d.name.toLowerCase().includes(keyword));
+      renderTable(filtered);
+    });
+
+    document.getElementById("filterSelect").addEventListener("change", e => {
+      const val = e.target.value;
+      if (!val || val === currentType) {
+        renderTable(currentType === "influencer" ? influencerData : sellerData);
+      } else {
+        tableBody.innerHTML = "<tr><td colspan='7'>No data for this filter</td></tr>";
+      }
+    });
+
+    // Initial
+    renderTable(influencerData);
+
+    // Call after any data changes
+    updateSummaryBoxes();
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="shortcut icon" href="https://i.postimg.cc/c4JtKSF2/dashboard.png" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+body {
+      background: linear-gradient(to Right, #f0f4ff, #e0e7ff);
+
+    }
+   .mainContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
+
+}
+
+    .sidebar {
+      margin-top: 80px;
+      width: 200px;
+      background-color: #ffffff37;
+      padding: 15px;
+    }
+
+
+
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      /* text-align: center; */
+    }
+
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+
+    .sidebar ul li a {
+      color: gray;
+      text-decoration: none;
+    }
+
+    .sidebar ul li a:hover {
+      color: #5050B2;
+    }
+
+    .sidebar-menu a.active {
+      background: #508eb2;
+      color: white;
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .sidebar-menu img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      margin: 0;
+      /* padding: 20px;
+    padding-top: 0; */
+    }
+
+    /* Base styles */
+    .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 1000;
+  /* margin-left: -20px; */
+  
+  /* border-radius: 30px; */
+}
+
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .companylogo {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .creatorName {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #333;
+      padding: 20px;
+      margin-top: 5rem;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .Creator-profile {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .header {
+        /* flex-direction: column; */
+        align-items: flex-start;
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .header-left,
+      .profile {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .creatorName {
+        font-size: 1rem;
+      }
+
+      .profile {
+        justify-content: flex-end;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .creatorName {
+        font-size: 0.95rem;
+      }
+
+      .companylogo {
+        height: 32px;
+      }
+
+      .Creator-profile {
+        height: 36px;
+        width: 36px;
+      }
+
+      .profile span {
+        font-size: 1.2rem;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .section1 {
+      display: flex;
+      padding: 0%;
+      margin-bottom: 20px;
+
+    }
+
+    .climateContainer {
+      flex: 1;
+      border-radius: 40px;
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      background-color: #dae7ff;
+
+    }
+
+
+
+    .climateBox img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+
+    }
+
+    .boxes {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (min-width: 1024px) {
+      .boxes {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px;
+        padding-top: 0;
+      }
+    }
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      border-radius: 25px;
+      width: 35vh;
+      height: 20vh;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .box-content {
+      color: white;
+      font-size: large;
+
+
+    }
+
+    .box1 {
+      background-color: #7DA0FA;
+
+    }
+
+    .box2 {
+      background-color: #5050B2;
+    }
+
+    .box3 {
+      background-color: #8F8EED;
+    }
+
+    .box4 {
+      background-color: #F59095;
+    }
+
+    .charts-wrapper {
+      /* width: 100%; */
+      margin: 20px 0;
+    }
+
+    .chart {
+      display: flex;
+      /* flex-wrap: wrap; */
+      justify-content: space-between;
+      gap: 20px;
+
+      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.08); */
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 1024px) {
+      .chart {
+        /* flex-direction: column; */
+        align-items: center;
+      }
+    }
+
+    /* Base layout for larger screens */
+    .sales-overview {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      background-color: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Left section: Region overview */
+    .sales-region {
+      flex: 1 1 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sales-amount {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #4f46e5;
+    }
+
+    .sales-region-name {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .sales-description {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* Middle section: Progress bars */
+    .sales-bars {
+      flex: 2 1 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .progress-row span:first-child {
+      width: 90px;
+    }
+
+    .progress-track {
+      flex: 1;
+      height: 10px;
+      background-color: #e5e7eb;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 5px;
+    }
+
+    /* Right section: Chart & Legend */
+    .sales-legend {
+      flex: 1 1 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.9rem;
+      align-items: flex-start;
+    }
+
+    .chart3 {
+      width: 100%;
+      max-width: 250px;
+      margin-bottom: 10px;
+    }
+
+    /* Dot indicators */
+    .dot {
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .dot-indigo {
+      background-color: #4f46e5;
+    }
+
+    .dot-yellow {
+      background-color: #facc15;
+    }
+
+    .dot-indigo-light {
+      background-color: #a5b4fc;
+    }
+
+    .fill-indigo {
+      background-color: #4f46e5;
+    }
+
+    .fill-yellow {
+      background-color: #facc15;
+    }
+
+    .fill-red {
+      background-color: #ef4444;
+    }
+
+    .fill-indigo-light {
+      background-color: #a5b4fc;
+    }
+
+    /* Medium screen (Tablet) */
+    @media (max-width: 1024px) {
+      .sales-overview {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .sales-region,
+      .sales-bars,
+      .sales-legend {
+        width: 100%;
+      }
+
+      .progress-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .progress-row span:first-child {
+        width: auto;
+        min-width: 80px;
+      }
+    }
+
+    /* Small screen (Mobile) */
+    /* @media (max-width: 600px) {
+  .sales-amount {
+    font-size: 1.5rem;
+  }
+
+  .sales-region-name {
+    font-size: 1rem;
+  }
+
+  .sales-description {
+    font-size: 0.85rem;
+  }
+
+  .progress-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .progress-row span {
+    margin-bottom: 4px;
+  }
+
+  .sales-legend {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .chart2 {
+    max-width: 100%;
+    margin-bottom: 12px;
+  }
+} */
+
+
+    @media (max-width: 768px) {
+      .chart {
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+    }
+
+
+    .chart1 canvas,
+    .chart2 canvas {
+      width: 30rem;
+
+      height: 15rem;
+      /* max-width: 25rem; */
+      /* height: 300px; */
+      /* flex: 1; */
+      /* display: block; */
+    }
+
+
+
+    .order-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      /* margin: auto; */
+      height: auto;
+      width: auto;
+      margin-bottom: 20px;
+    }
+
+    .order-card h2 {
+      font-weight: 500;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+
+    .order-card .description {
+      font-size: 0.875rem;
+      color: #6b7280;
+      /* light gray */
+      margin-bottom: 24px;
+    }
+
+    .order-grid {
+
+      display: flex;
+      justify-content: space-around;
+      color: #4f46e5;
+      /* indigo-700 */
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-bottom: 24px;
+    }
+
+    .order-item .label {
+      font-size: 0.875rem;
+      font-weight: normal;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+
+    .order-item .value {
+      font-size: 1.25rem;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 9999px;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .dot-indigo {
+      background-color: #4338ca;
+    }
+
+    .dot-yellow {
+      background-color: #facc15;
+    }
+
+    .dot-indigo-light {
+      background-color: #6366f1;
+    }
+
+
+    .table-section {
+      background: white;
+      padding: 20px;
+      border-radius: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-section table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table-section table,
+    th,
+    td {
+      border: 1px solid #ccc;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 1024px) {
+      .companylogo {
+        padding-left: 20px;
+      }
+
+      .section1 {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .climateContainer {
+        max-width: 40rem;
+        height: 20rem;
+        margin-left: 0;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+      }
+
+      .climateBox img {
+
+        object-fit: contain;
+        flex-wrap: wrap;
+
+      }
+
+      .boxes {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px;
+      }
+
+      .box {
+        width: 35vh;
+        height: 17vh;
+      }
+
+      .order-card,
+      .chart,
+      .order-card {
+        flex-wrap: wrap;
+      }
+
+
+
+
+
+
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        height: auto;
+        overflow: auto;
+      }
+
+
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        /* left: -100%; */
+        width: 200px;
+        height: 100%;
+        z-index: 1000;
+        /* background-color: white; */
+        transition: left 0.3s ease;
+      }
+
+
+      /* .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    } */
+
+      .sidebar ul li {
+        margin: 10px;
+      }
+
+
+      .boxes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 100%;
+      }
+
+      .box {
+        margin: 7px auto;
+        width: 100%;
+      }
+
+      .table-section {
+        padding: 10px;
+        width: 100%;
+        overflow-x: auto;
+      }
+
+
+
+
+      #salesChart,
+      #salesChart2 {
+        width: 100% !important;
+        max-width: 100%;
+        height: 100;
+        max-height: 900px;
+
+      }
+
+      .chart-heading {
+        font-weight: 400;
+        font-size: 16px;
+        padding-left: 0;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      */
+
+      /* .sidebar{
+        display: none;
+    } */
+      .collapsed,
+      .active {
+        display: none;
+      }
+
+      .main {
+        margin-left: 0px;
+        padding-left: 0px;
+      }
+    }
+
+
+    @media (max-width: 480px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        /* left: -100%; */
+        width: 200px;
+        height: 100%;
+        z-index: 1000;
+        /* background-color: white; */
+        transition: left 0.3s ease;
+      }
+
+
+
+      .main {
+
+        padding: 20px;
+      }
+
+      .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar ul li {
+        margin: 5px;
+      }
+
+
+
+
+
+
+      .boxes {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 10px;
+        width: 100%;
+
+      }
+
+      .box {
+        margin: 7px auto;
+        width: 100%;
+      }
+
+      .order-item .label {
+        font-size: 0.8rem;
+        margin-left: 5px;
+      }
+
+      .order-item .value {
+        font-size: 0.8rem;
+        margin-left: 5px;
+        text-align: center;
+
+
+      }
+
+
+      th,
+      td {
+        font-size: 12px;
+        padding: 5px;
+      }
+
+
+      .table-section {
+        padding: 10px;
+      }
+
+
+
+      /* #salesChart,
+    #salesChart2 {
+        width: 100%;
+        max-width: 20rem;
+        height: 100%;
+        max-height: 80rem;
+        margin: auto;
+
+    }
+
+    .chart-heading {
+        font-weight: 300;
+        font-size: 14px;
+        padding-left: 0;
+        text-align: center;
+        margin-bottom: 15px;
+    } */
+    }
+
+    .menu-toggle {
+      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+
+     
+      background-color: #fff;
+      color: #000;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 1001;
+      /* will be shown on small screens */
+    }
+
+
+    /* Sidebar default styles */
+    .sidebar {
+      width: 200px;
+      background-color: #fff;
+      padding: 15px;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    /* Collapsed Sidebar (for large screen toggle) */
+    .sidebar.collapsed {
+      width: 70px;
+
+    }
+
+    .sidebar.collapsed .menu-text {
+      display: none;
+    }
+
+
+
+    /* Responsive Mobile Behavior */
+    @media (max-width: 1024px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        /* left: -100%; */
+        width: 200px;
+        height: 100%;
+        z-index: 1000;
+        /* background-color: white; */
+        transition: left 0.3s ease;
+
+
+      }
+
+
+      .main {
+        padding: 20px;
+        /* margin-left: 60px; */
+
+      }
+
+      /* Show sidebar */
+      .sidebar.active {
+        left: 0;
+      }
+
+      /* Optional: If you want small version (like mini menu) */
+      .sidebar.collapsed {
+        width: 60px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+
+      .sidebar.collapsed .sidebar-menu a {
+        display: none;
+        background: none;
+
+      }
+
+      .collapsed,
+      .active {
+        display: none;
+      }
+
+    }
+
+
+    /* Sidebar menu items */
+    .sidebar-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-menu img {
+      width: 30px;
+      height: 30px;
+      margin-right: 12px;
+    }
+  </style>
+</head>
+
+<body>
+ <div class="header">
+      <div class="header-left">
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+        <img class="companylogo" src="https://i.postimg.cc/Y2Rmq9zQ/companylogo.webp" alt="">
+      </div>
+
+
+      <div class="profile">
+
+        <img class="Creator-profile" src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt="">
+
+        <span>🔔</span>
+
+      </div>
+    </div>
+<div class="mainContainer">
+  <div class="sidebar" id="sidebar">
+    <ul class="sidebar-menu">
+      <li><a href="dashboard.html"><img src="https://i.postimg.cc/c4JtKSF2/dashboard.png" alt=""><span class="menu-text">Dashboard</span></a>
+      </li>
+      <li><a href="product.html"><img src="https://i.postimg.cc/T1NwjKtS/product.png" alt=""><span class="menu-text">Products</span> </a></li>
+      <li><a href="orderList.html"><img src="https://i.postimg.cc/QCdCWQJ1/orderlist.png" alt=""><span class="menu-text">Order List</span> </a></li>
+      <li><a href="beneficiary.html"><img src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt=""><span class="menu-text">Beneficiary</span> </a></li>
+      <li><a href="coinsWallet.html"><img src="https://i.postimg.cc/mkLzyfBc/coins-Wallet.png" alt=""> <span class="menu-text">Coins Wallet</span></a></li>
+      <li><a href="connectFeed.html"><img src="https://i.postimg.cc/4NF7VSMd/connectfeed.png" alt=""> <span class="menu-text">ConnectFeed</span></a></li>
+      <li><a href="#"><img src="https://i.postimg.cc/vZg1zvFv/integration.png" alt=""><span class="menu-text">Integration</span> </a></li>
+      <li><a href="#"><img src="https://i.postimg.cc/hGVXFPGz/leadlinkway.png" alt=""> <span class="menu-text">LeadLinkWay</span></a></li>
+      <li><a href="#"><img src="https://i.postimg.cc/hjbQmPWW/academy.png" alt=""><span class="menu-text">Academy</span> </a></li>
+      <li><a href="#"><img src="https://i.postimg.cc/CxX8TQHt/settings-1.png" alt=""><span class="menu-text">Setting</span> </a></li>
+
+    </ul>
+  </div>
+  
+   
+  <div class="main">
+          <div class="creatorName">Welcome, Amit 👋</div>
+
+    <section>
+      <div class="section1">
+        <div class="climateContainer">
+          <div class="climateBox"> <img
+              src="https://demo.bootstrapdash.com/skydash/themes/assets/images/dashboard/people.svg" alt=""></div>
+        </div>
+        <div class="boxes income-stats">
+          <div class="box box1">
+            <div class="box-content" style="font-size: medium;">Today’s Earning</div>
+            <div class="box-content" style="font-size: x-large;" id="todayCoi">4006</div>
+            <div class="box-content" style="font-size: large;">10.00% (30 days)</div>
+          </div>
+          <div class="box box2">
+            <div class="box-content" style="font-size: medium;">Yesterday’s Earning</div>
+            <div class="box-content" style="font-size: x-large;" id="yesterdayCoin">61344</div>
+            <div class="box-content" style="font-size: large;">22.00% (30 days)</div>
+          </div>
+          <div class="box box3">
+            <div class="box-content" style="font-size: medium;">This Month’s Earning</div>
+            <div class="box-content" style="font-size: x-large;" id="monthCoin">34040</div>
+            <div class="box-content" style="font-size: large;">2.00% (30 days)</div>
+          </div>
+          <div class="box box4">
+            <div class="box-content" style="font-size: medium;">This Year’s Earning</div>
+            <div class="box-content" style="font-size: x-large;" id="yearCoin">37033</div>
+            <div class="box-content" style="font-size: large;">0.22% (30 days)</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <div class="charts-wrapper">
+      <div class="chart">
+        <article class="order-card">
+          <h2>Order Details</h2>
+          <p class="description">
+            The total number of sessions within the date range. It is the period time a user is actively engaged with
+            your website, page or app, etc.
+          </p>
+
+          <div class="order-grid">
+            <div class="order-item">
+              <p class="label">Order Value</p>
+              <p class="value">12.3k</p>
+            </div>
+            <div class="order-item">
+              <p class="label">Orders</p>
+              <p class="value">14k</p>
+            </div>
+            <div class="order-item">
+              <p class="label">Users</p>
+              <p class="value">71.56%</p>
+            </div>
+            <div class="order-item">
+              <p class="label">Downloads</p>
+              <p class="value">34040</p>
+            </div>
+          </div>
+          <div class="chart1"> <canvas id="salesChart"></canvas></div>
+
+        </article>
+        <article class="order-card">
+          <h2>Sales Report</h2>
+          <p class="description">
+            The total number of sessions within the date range. It is the period time a user is actively engaged with
+            your website, page or app, etc
+          </p>
+          <div><span class="dot dot-indigo"></span> Offline sales</div>
+          <div><span class="dot dot-yellow"></span> Online sales</div>
+          <div class="order-grid">
+
+
+
+
+          </div>
+          <div class="chart2"> <canvas id="salesChart2"></canvas> </div>
+
+        </article>
+
+      </div>
+    </div>
+
+    <section class="sales-overview">
+      <div class="sales-region">
+        <p class="sales-amount">$34040</p>
+        <p class="sales-region-name">North America</p>
+        <p class="sales-description">
+          The total number of sessions within the date range. It is the period time a user is actively engaged with your
+          website, page or app, etc.
+        </p>
+      </div>
+
+      <div class="sales-bars">
+        <div class="progress-row">
+          <span>Illinois</span>
+          <div class="progress-track">
+            <div class="progress-fill fill-indigo" style="width: 60%;height: 100%;"></div>
+          </div>
+          <span>713</span>
+        </div>
+
+        <div class="progress-row">
+          <span>Washington</span>
+          <div class="progress-track bg-yellow">
+            <div class="progress-fill fill-yellow" style="width: 50%;height: 100%;"></div>
+          </div>
+          <span>583</span>
+        </div>
+
+        <div class="progress-row">
+          <span>Mississippi</span>
+          <div class="progress-track bg-red">
+            <div class="progress-fill fill-red" style="width: 70%; height: 100%;"></div>
+          </div>
+          <span>924</span>
+        </div>
+
+        <div class="progress-row">
+          <span>California</span>
+          <div class="progress-track">
+            <div class="progress-fill fill-indigo-light" style="width: 55%; height: 100%;"></div>
+          </div>
+          <span>664</span>
+        </div>
+
+        <div class="progress-row">
+          <span>Maryland</span>
+          <div class="progress-track">
+            <div class="progress-fill fill-indigo" style="width: 50%; height: 100%;"></div>
+          </div>
+          <span>560</span>
+        </div>
+
+        <div class="progress-row">
+          <span>Alaska</span>
+          <div class="progress-track bg-red">
+            <div class="progress-fill fill-red" style="width: 60%;height: 100%;"></div>
+          </div>
+          <span>793</span>
+        </div>
+      </div>
+
+      <aside class="sales-legend">
+        <div class="chart3"> <canvas id="salesChart3"></canvas> </div>
+
+
+        <div><span class="dot dot-indigo"></span> Offline sales</div>
+        <div><span class="dot dot-yellow"></span> Online sales</div>
+        <div><span class="dot dot-indigo-light"></span> Returns</div>
+
+      </aside>
+    </section>
+
+
+    <div class="table-section">
+      <h4>Table Section</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Payment Mode</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Order #1</td>
+            <td>Complete</td>
+            <td>2025-06-30</td>
+            <td>200</td>
+            <td>upi</td>
+          </tr>
+          <tr>
+            <td>Order #2</td>
+            <td>Pending</td>
+            <td>2025-06-28</td>
+            <td>400</td>
+            <td>credit card</td>
+          </tr>
+          <tr>
+            <td>Order #3</td>
+            <td>Pending</td>
+            <td>2025-06-28</td>
+            <td>600</td>
+            <td>debit card</td>
+          </tr>
+          <tr>
+            <td>Order #4</td>
+            <td>Pending</td>
+            <td>2025-06-28</td>
+            <td>500</td>
+            <td>upi</td>
+          </tr>
+          <tr>
+            <td>Order #5</td>
+            <td>Pending</td>
+            <td>2025-06-28</td>
+            <td>700</td>
+            <td>debit card</td>
+          </tr>
+          <tr>
+            <td>Order #6</td>
+            <td>Pending</td>
+            <td>2025-06-28</td>
+            <td>200</td>
+            <td>upi</td>
+          </tr>
+          <tr>
+            <td>Order #7</td>
+            <td>Pending</td>
+            <td>2025-06-28</td>
+            <td>200</td>
+            <td>upi</td>
+          </tr>
+          <tr>
+            <td>Order #8</td>
+            <td>Pending</td>
+            <td>2025-06-28</td>
+            <td>200</td>
+            <td>upi</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('.sidebar-menu a');
+      const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        const page = href?.split('/').pop()?.replace('.html', '');
+        if (page === currentPage) {
+          link.classList.add('active');
+        }
+      });
+
+      // Sidebar toggle logic
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.querySelector('.menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('collapsed');
+          if (window.innerWidth <= 1024) {
+            sidebar.classList.toggle('active');
+          }
+        });
+      });
+
+
+
+
+      // Initialize both charts
+      const ctx1 = document.getElementById('salesChart')?.getContext('2d');
+      const ctx2 = document.getElementById('salesChart2')?.getContext('2d');
+      const ctx3 = document.getElementById('salesChart3')?.getContext('2d');
+
+
+      function renderChart(ctx, type, labels, data, backgroundColors, label = 'Data') {
+        if (!ctx) return; // Ensure canvas exists
+        return new Chart(ctx, {
+          type: type,
+          data: {
+            labels: labels,
+            datasets: [{
+              label: label,
+              data: data,
+              backgroundColor: backgroundColors,
+              borderColor: type === 'line' ? backgroundColors[0] : undefined,
+              fill: type === 'line'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'top',
+              }
+            }
+          }
+        });
+      }
+
+      renderChart(
+        ctx1,
+        'bar',
+        ['January', 'February', 'March', 'April', 'May', 'June'],
+        [12, 19, 3, 5, 2, 3],
+        ['#007bff', '#28a745', '#ffc107', '#dc3545', '#17a2b8', '#6f42c1'],
+        'Sales Chart'
+      );
+
+      renderChart(
+        ctx2,
+        'line',
+        ['January', 'February', 'March', 'April', 'May', 'June'],
+        [5, 10, 15, 20, 25, 30],
+        ['#4338ca', '#facc15'],
+        'Growth Chart'
+      );
+      renderChart(
+        ctx3,
+        'pie',
+        ['January', 'February', 'March', 'April', 'May', 'June'],
+        [5, 1, 15, 2, 35, 30],
+        ['#4338ca', '#facc15'],
+        'Growth Chart'
+      );
+
+      // Coin Data Fetch
+      fetchCoinData();
+    });
+
+    async function fetchCoinData() {
+      try {
+        const response = await fetch('https://your-api-url.com/api/coins'); // Replace with actual API
+        const data = await response.json();
+
+        document.getElementById('todayCoin').textContent = data.today ?? 'N/A';
+        document.getElementById('yesterdayCoin').textContent = data.yesterday ?? 'N/A';
+        document.getElementById('monthCoin').textContent = data.month ?? 'N/A';
+        document.getElementById('yearCoin').textContent = data.year ?? 'N/A';
+
+      } catch (error) {
+        console.error('Error fetching coin data:', error);
+        document.getElementById('todayCoin').textContent = "Error";
+        document.getElementById('yesterdayCoin').textContent = "Error";
+        document.getElementById('monthCoin').textContent = "Error";
+        document.getElementById('yearCoin').textContent = "Error";
+      }
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+
+      if (window.innerWidth <= 1024) {
+        sidebar.classList.toggle('active');
+      }
+    }
+  </script>
+
+
+</body>
+
+</html>

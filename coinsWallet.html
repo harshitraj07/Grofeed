@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coins Wallet</title>
+  <link rel="shortcut icon" href="https://i.postimg.cc/mkLzyfBc/coins-Wallet.png" type="image/x-icon">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to Right, #f0f4ff, #e0e7ff);
+
+    }
+
+    .mainContainer {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      overflow: hidden;
+
+    }
+
+
+    .sidebar {
+      margin-top: 80px;
+      width: 200px;
+      background-color: #ffffff37;
+      padding: 15px;
+    }
+
+
+
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      /* text-align: center; */
+    }
+
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+
+    .sidebar ul li a {
+      color: gray;
+      text-decoration: none;
+    }
+
+    .sidebar ul li a:hover {
+      color: #5050B2;
+    }
+
+    .sidebar-menu a.active {
+      background: #508eb2;
+      color: white;
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .sidebar-menu img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .menu-toggle {
+      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+
+
+      background-color: #fff;
+      color: #000;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 1001;
+      /* will be shown on small screens */
+    }
+
+
+    /* Sidebar default styles */
+    .sidebar {
+      width: 200px;
+      background-color: #fff;
+      padding: 15px;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    /* Collapsed Sidebar (for large screen toggle) */
+    .sidebar.collapsed {
+      width: 70px;
+
+    }
+
+    .sidebar.collapsed .menu-text {
+      display: none;
+    }
+
+    .sidebar-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-menu img {
+      width: 30px;
+      height: 30px;
+      margin-right: 12px;
+    }
+
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      margin: 0;
+      padding: 20px;
+      padding-top: 0;
+    }
+
+    /* Base styles */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background-color: #ffffff;
+      /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+      position: fixed;
+      width: 100vw;
+      top: 0;
+      z-index: 1000;
+      /* margin-left: -20px; */
+
+      /* border-radius: 30px; */
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .companylogo {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .creatorName {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #333;
+      margin-top: 6rem;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .Creator-profile {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        height: auto;
+        overflow: auto;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        /* left: -100%; */
+        width: 200px;
+        height: 100%;
+        z-index: 1000;
+        /* background-color: white; */
+        transition: left 0.3s ease;
+      }
+
+      .sidebar ul li {
+        margin: 10px;
+      }
+
+      .sidebar.collapsed,
+      .sidebar.active {
+        display: none;
+      }
+
+      .main {
+        margin-left: 0px;
+        padding-left: 0px;
+      }
+
+      .header {
+        /* flex-direction: column; */
+        align-items: flex-start;
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .header-left,
+      .profile {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .creatorName {
+        font-size: 1rem;
+      }
+
+      .profile {
+        justify-content: flex-end;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        /* left: -100%; */
+        width: 200px;
+        height: 100%;
+        z-index: 1000;
+        /* background-color: white; */
+        transition: left 0.3s ease;
+      }
+
+
+
+      .main {
+
+        padding: 20px;
+      }
+
+      .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar ul li {
+        margin: 5px;
+      }
+
+      .creatorName {
+        font-size: 0.95rem;
+      }
+
+      .companylogo {
+        height: 32px;
+      }
+
+      .Creator-profile {
+        height: 36px;
+        width: 36px;
+      }
+
+      .profile span {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .companylogo {
+        padding-left: 20px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        /* left: -100%; */
+        width: 200px;
+        height: 100%;
+        z-index: 1000;
+        /* background-color: white; */
+        transition: left 0.3s ease;
+
+
+      }
+
+
+      .main {
+        padding: 20px;
+        /* margin-left: 60px; */
+
+      }
+
+      /* Show sidebar */
+      .sidebar.active {
+        left: 0;
+      }
+
+      /* Optional: If you want small version (like mini menu) */
+      .sidebar.collapsed {
+        width: 60px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+
+      .sidebar.collapsed .sidebar-menu a {
+        display: none;
+        background: none;
+
+      }
+
+      .sidebar.collapsed,
+      .sidebar.active {
+        display: none;
+      }
+
+    }
+
+    .container {
+      margin: auto;
+      margin-top: 2rem;
+    }
+
+    .toggle-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .toggle-btn {
+      padding: 10px 20px;
+      font-size:16px;
+      border: none;
+      background-color: #e2e8f0;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .toggle-btn.active {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    .box-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      margin-bottom: 20px;
+      margin-top: 2rem;
+      gap: 20px;
+    }
+
+    .info-box {
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(to bottom, #fff, #dbefff);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      align-items: center;
+      gap: 0.8rem;
+      transition: all 0.3s ease;
+      border-left: 4px solid #2563eb;
+    }
+
+    .info-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-box img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 5px;
+      object-fit: contain;
+    }
+
+    .info-box div:first-of-type {
+      font-size: 16px;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .info-box div:last-of-type {
+      font-size: 22px;
+      font-weight: 600;
+      color: #2563eb;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-top: 2rem;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+    }
+
+    thead {
+      background: #f1f1f1;
+    }
+
+    th,
+    td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      align-items: center;
+      margin-top: 4rem;
+
+    }
+
+    .filter-bar input,
+    .filter-bar select,
+    .filter-bar button {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .filter-bar button {
+      background-color: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+
+    .filter-bar button:hover {
+      background-color: #1e40af;
+    }
+
+    @media (max-width: 768px) {
+      .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-left">
+      <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+      <img class="companylogo" src="https://i.postimg.cc/Y2Rmq9zQ/companylogo.webp" alt="">
+    </div>
+
+
+    <div class="profile">
+
+      <img class="Creator-profile" src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt="">
+
+      <span>🔔</span>
+
+    </div>
+  </div>
+  <div class="mainContainer">
+    <div class="sidebar" id="sidebar">
+      <ul class="sidebar-menu">
+        <li><a href="dashboard.html"><img src="https://i.postimg.cc/c4JtKSF2/dashboard.png" alt=""><span
+              class="menu-text">Dashboard</span></a>
+        </li>
+        <li><a href="product.html"><img src="https://i.postimg.cc/T1NwjKtS/product.png" alt=""><span
+              class="menu-text">Products</span> </a></li>
+        <li><a href="orderList.html"><img src="https://i.postimg.cc/QCdCWQJ1/orderlist.png" alt=""><span
+              class="menu-text">Order List</span> </a></li>
+        <li><a href="beneficiary.html"><img src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt=""><span
+              class="menu-text">Beneficiary</span> </a></li>
+        <li><a href="coinsWallet.html"><img src="https://i.postimg.cc/mkLzyfBc/coins-Wallet.png" alt=""> <span
+              class="menu-text">Coins Wallet</span></a></li>
+        <li><a href="connectFeed.html"><img src="https://i.postimg.cc/4NF7VSMd/connectfeed.png" alt=""> <span
+              class="menu-text">ConnectFeed</span></a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/vZg1zvFv/integration.png" alt=""><span
+              class="menu-text">Integration</span> </a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/hGVXFPGz/leadlinkway.png" alt=""> <span
+              class="menu-text">LeadLinkWay</span></a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/hjbQmPWW/academy.png" alt=""><span
+              class="menu-text">Academy</span> </a></li>
+        <li><a href="#"><img src="https://i.postimg.cc/CxX8TQHt/settings-1.png" alt=""><span
+              class="menu-text">Setting</span> </a></li>
+
+      </ul>
+    </div>
+
+
+    <div class="main">
+      <div class="creatorName">Welcome, Amit 👋</div>
+
+      <div class="container">
+
+        <div class="toggle-buttons">
+          <button class="toggle-btn active" onclick="showSection('total', this)">Earning Coin Wallet</button>
+          <button class="toggle-btn" onclick="showSection('disputeOrder', this)">Dispute Order</button>
+          <button class="toggle-btn" onclick="showSection('refund', this)">Refund Order</button>
+
+          <button class="toggle-btn" onclick="showSection('redemptionStatus', this)">Redemption Status</button>
+          <button class="toggle-btn" onclick="showSection('invoiceEarning', this)">Invoice Earning</button>
+
+          <button class="toggle-btn" onclick="showSection('deposit', this)">Deposit</button>
+        </div>
+
+
+        <div class="box-grid"></div>
+
+
+        <div class="filter-bar">
+          <input type="text" id="searchInput" placeholder="Search..." />
+          <label for="fromdate">From:
+            <input type="date" id="fromDate" /></label>
+          <label for="toDate">To:
+            <input type="date" id="toDate" /></label>
+          <select id="statusFilter">
+            <option value="">All Status</option>
+            <option value="Settled">Settled</option>
+            <option value="Unsettled">Unsettled</option>
+            <option value="In Dispute">In Dispute</option>
+            <option value="Secured">Secured</option>
+            <option value="Pending">Pending</option>
+          </select>
+          <button onclick="applyFilter()">Filter</button>
+          <button onclick="downloadCSV()">Download</button>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr id="table-head"></tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+  </div>
+
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('.sidebar-menu a');
+      const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        const page = href?.split('/').pop()?.replace('.html', '');
+        if (page === currentPage) {
+          link.classList.add('active');
+        }
+      });
+
+      // Sidebar toggle logic
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.querySelector('.menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('collapsed');
+          if (window.innerWidth <= 1024) {
+            sidebar.classList.toggle('active');
+          }
+        });
+      });
+
+
+
+
+
+    });
+
+
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+
+      if (window.innerWidth <= 1024) {
+        sidebar.classList.toggle('active');
+      }
+    }
+
+
+
+    const sectionData = {
+      total: {
+        summary: [
+          { title: "Today Earn Coin", value: "2000", img: "https://i.postimg.cc/76SZ8K2n/9165692.png" },
+          { title: "Yesterday Earn Coin", value: "4000", img: "https://i.postimg.cc/76SZ8K2n/9165692.png" },
+          { title: "This Month Earning Coin", value: "150", img: "https://i.postimg.cc/76SZ8K2n/9165692.png" }
+        ],
+        tableHeaders: ["Sno.", "User Name", "Mobile No.", "E-mail", "Product Name", "Amount", "Date", "Status"],
+        table: [
+          ["1", "Alice Johnson", "9876543210", "alice@example.com", "Smartphone", "500", "2025-07-01", "Settled"],
+          ["2", "Bob Smith", "9123456789", "bob.smith@example.com", "Laptop", "1200", "2025-07-02", "Pending"],
+          ["3", "Charlie Brown", "9988776655", "charlie.b@example.com", "Tablet", "300", "2025-07-03", "Cancelled"],
+          ["4", "Diana Prince", "9001234567", "diana.p@example.com", "Headphones", "150", "2025-07-04", "Settled"],
+          ["5", "Ethan Hunt", "9112233445", "ethan.h@example.com", "Smartwatch", "250", "2025-07-05", "In Process"]
+        ]
+      },
+      redemptionStatus: {
+        summary: [
+          { title: "Total Complete Payout", value: "150", img: "https://i.postimg.cc/ZnRf1M9W/18321015.png" },
+          { title: "This Month Complete Payout", value: "100", img: "https://i.postimg.cc/ZnRf1M9W/18321015.png" },
+          { title: "Requested Payout", value: "110", img: "https://i.postimg.cc/ZnRf1M9W/18321015.png" }
+        ],
+        tableHeaders: ["Sno.", "Partner Name", "Account Name", "Account No.", "IFSC Code ", "Pan No.", "Tarnsfer Id", "Amount", "Request Date", "Status", "Invoice"],
+        table: [
+
+          ["1", "Alice Corp", "Main Account", "1234567890", "HDFC0001234", "ABCDE1234F", "TXN0001", "500", "2025-07-01", "Settled", "INV001"],
+          ["2", "Bob Ltd", "Savings Account", "9876543210", "ICIC0005678", "PQRS5678L", "TXN0002", "1200", "2025-07-02", "Pending", "INV002"],
+          ["3", "Charlie Inc", "Corporate Account", "4567891230", "SBIN0007890", "LMNO9012X", "TXN0003", "750", "2025-07-03", "Failed", "INV003"]
+
+
+        ]
+      },
+      disputeOrder: {
+        summary: [
+          { title: "Due Today", value: "10", img: "https://i.postimg.cc/TPCcjcwQ/17352703.png" },
+          { title: "Due Tomorrow", value: "2", img: "https://i.postimg.cc/TPCcjcwQ/17352703.png" },
+          { title: "New Case", value: "0", img: "https://i.postimg.cc/TPCcjcwQ/17352703.png" }
+        ],
+        tableHeaders: ["Sno.", "Disute ID", "User Name", "Mobile No.", "E-mail", "Order id", "Payment Date", "Dispute Type", "Dispute Date"],
+        table: [
+
+          ["1", "D12345", "Bob", "9876543210", "bob@example.com", "ORD98765", "2025-07-01", "In Dispute", "2025-07-02"],
+          ["2", "D12346", "Alice", "9123456780", "alice@example.com", "ORD98766", "2025-07-03", "Refund Request", "2025-07-04"],
+          ["3", "D12347", "Charlie", "9988776655", "charlie@example.com", "ORD98767", "2025-07-05", "Payment Failed", "2025-07-06"]
+
+
+        ]
+      },
+      refund: {
+        summary: [
+          { title: "Total Order Refund", value: "10", img: "https://i.postimg.cc/TYvfvjdt/18434372.png" },
+          { title: "This month Refund Order", value: "2", img: "https://i.postimg.cc/TYvfvjdt/18434372.png" },
+          { title: "Total Refund Amount", value: "0", img: "https://i.postimg.cc/TYvfvjdt/18434372.png" }
+        ],
+        tableHeaders: ["Sno.", "Refund ID", "User Name", "Mobile No.", "E-mail", "Order ID", "Payment Date", "Refund Mode", "Refund Date", "Amount", "UTR No.", "Status"],
+        table: [
+
+          ["1", "R12345", "John", "9876543210", "john@example.com", "ORD1001", "2025-07-01", "UPI", "2025-07-02", "200", "UTR987654321", "Refunded"],
+          ["2", "R12346", "Emily", "9123456780", "emily@example.com", "ORD1002", "2025-07-03", "Bank Transfer", "2025-07-04", "350", "UTR123456789", "Processing"],
+          ["3", "R12347", "Michael", "9988776655", "michael@example.com", "ORD1003", "2025-07-05", "Wallet", "2025-07-06", "150", "UTR555666777", "Failed"]
+
+
+        ]
+      },
+      deposit: {
+        summary: [
+          { title: "Total Earn Coin", value: "3000", img: "https://i.postimg.cc/vmCH1Jys/12449886.png" },
+          { title: "Yesterday Earn Coin", value: "2000", img: "https://i.postimg.cc/vmCH1Jys/12449886.png" },
+          { title: "This Month Earning Coin", value: "75", img: "https://i.postimg.cc/vmCH1Jys/12449886.png" }
+        ],
+        tableHeaders: ["Sno.", "Partner Name", "Deposit Amount", "Payment Mode", "Transaction ID", "Deposit Date", "Status", "Remarks"]
+        ,
+        table: [
+          ["1", "Alice Corp", "₹1000", "Bank Transfer", "TXN123456", "2025-07-01", "Success", "Monthly deposit"],
+          ["2", "Bob Ltd", "₹1500", "UPI", "UPI987654", "2025-07-03", "Pending", "Awaiting bank confirmation"],
+          ["3", "Charlie Inc", "₹500", "Cheque", "CHQ456789", "2025-07-04", "Failed", "Cheque returned - signature mismatch"],
+          ["4", "Delta Solutions", "₹2000", "Bank Transfer", "TXN654321", "2025-07-05", "Success", "Quarterly deposit"],
+          ["5", "Echo Partners", "₹800", "UPI", "UPI321987", "2025-07-06", "Success", ""]
+        ]
+
+      },
+      invoiceEarning: {
+        summary: [
+          { title: "Total Earn Coin", value: "₹1,20,000", img: "https://i.postimg.cc/HkHMn722/8152572.png" },
+          { title: "Yesterday Earn Coin", value: "₹1,00,000", img: "https://i.postimg.cc/HkHMn722/8152572.png" },
+          { title: "This Month Earning Coin", value: "98", img: "https://i.postimg.cc/HkHMn722/8152572.png" }
+        ],
+        tableHeaders: ["Sno.", "Invoice No.", "Partner Name", "Earning Amount", "Invoice Amount", "Commission (%)", "Date Issued", "Payment Status", "Payment Date", "Remarks"]
+        ,
+        table: [
+
+          ["1", "INV00123", "Alice Corp", "₹500", "₹5000", "10%", "2025-07-01", "Paid", "2025-07-05", "Monthly payout"],
+          ["2", "INV00124", "Bob Ltd", "₹750", "₹7500", "10%", "2025-07-02", "Pending", "", "Awaiting payment"],
+          ["3", "INV00125", "Charlie Inc", "₹600", "₹6000", "10%", "2025-07-03", "Failed", "", "Bank rejection"],
+          ["4", "INV00126", "Delta Solutions", "₹850", "₹8500", "10%", "2025-07-04", "Paid", "2025-07-06", "Quarterly bonus"],
+          ["5", "INV00127", "Echo Partners", "₹400", "₹4000", "10%", "2025-07-05", "Paid", "2025-07-07", ""]
+
+
+        ]
+      }
+
+
+
+
+
+
+    };
+
+    let currentSection = "total";
+
+    function showSection(sectionId, btn) {
+      currentSection = sectionId;
+      document.querySelectorAll(".toggle-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderContent(sectionId, sectionData[sectionId].table);
+    }
+
+    function renderContent(sectionId, data) {
+      const boxGrid = document.querySelector(".box-grid");
+      boxGrid.innerHTML = "";
+      sectionData[sectionId].summary.forEach(item => {
+        boxGrid.innerHTML += `
+          <div class="info-box">
+            <img src="${item.img}" alt="icon" />
+            <div>${item.title}</div>
+            <div><strong>${item.value}</strong></div>
+          </div>`;
+      });
+
+      const thead = document.getElementById("table-head");
+      thead.innerHTML = "";
+      sectionData[sectionId].tableHeaders.forEach(header => {
+        thead.innerHTML += `<th>${header}</th>`;
+      });
+
+      const tbody = document.getElementById("table-body");
+      tbody.innerHTML = "";
+      data.forEach(row => {
+        const rowHTML = row.map(col => `<td>${col}</td>`).join("");
+        tbody.innerHTML += `<tr>${rowHTML}</tr>`;
+      });
+    }
+
+    function applyFilter() {
+      const search = document.getElementById("searchInput").value.toLowerCase();
+      const from = document.getElementById("fromDate").value;
+      const to = document.getElementById("toDate").value;
+      const status = document.getElementById("statusFilter").value;
+
+      const filtered = sectionData[currentSection].table.filter(row => {
+        const rowDate = row[0];
+        const rowText = row.join(" ").toLowerCase();
+        const rowStatus = row[row.length - 1];
+
+        const matchSearch = rowText.includes(search);
+        const matchFrom = !from || rowDate >= from;
+        const matchTo = !to || rowDate <= to;
+        const matchStatus = !status || rowStatus === status;
+
+        return matchSearch && matchFrom && matchTo && matchStatus;
+      });
+
+      renderContent(currentSection, filtered);
+    }
+
+    function downloadCSV() {
+      const headers = sectionData[currentSection].tableHeaders;
+      const rows = document.querySelectorAll("#table-body tr");
+      let csv = headers.join(",") + "\n";
+
+      rows.forEach(tr => {
+        const cells = tr.querySelectorAll("td");
+        const row = Array.from(cells).map(td => td.textContent).join(",");
+        csv += row + "\n";
+      });
+
+      const blob = new Blob([csv], { type: "text/csv" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${currentSection}_data.csv`;
+      link.click();
+    }
+
+    showSection("total", document.querySelector(".toggle-btn.active"));
+  </script>
+
+
+
+
+</body>
+
+</html>
