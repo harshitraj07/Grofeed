@@ -668,6 +668,7 @@ thead{
       font-size: 0.8rem;
       color: #9ca3af;
     }
+    
   </style>
 </head>
 
@@ -720,7 +721,7 @@ thead{
    <div class="main">
     
 
-    <h1>Influencer’s Product List</h1>
+    <h1>Creator’s Product List</h1>
 
     <div class="controls">
       <select id="categoryFilter">
@@ -1001,7 +1002,7 @@ thead{
       });
 
       let pieChart = new Chart(pieCtx, {
-        type: 'pie',
+        type: 'doughnut',
         data: {
           labels: ['Electronics', 'Fashion', 'Home', 'Books'],
           datasets: [{

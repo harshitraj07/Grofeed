@@ -336,6 +336,7 @@
     .sales-bars {
       flex: 2 1 400px;
       display: flex;
+      justify-content: center;
       flex-direction: column;
       gap: 16px;
     }
@@ -375,11 +376,11 @@
       align-items: flex-start;
     }
 
-    .chart3 {
+    /* .chart3 {
       width: 100%;
       max-width: 250px;
       margin-bottom: 10px;
-    }
+    } */
 
     /* Dot indicators */
     .dot {
@@ -423,6 +424,7 @@
       .sales-overview {
         flex-direction: column;
         align-items: stretch;
+        gap: 0;
       }
 
       .sales-region,
@@ -1159,9 +1161,9 @@
           <div class="chart3"> <canvas id="salesChart3"></canvas> </div>
 
 
-          <div><span class="dot dot-indigo"></span> Offline sales</div>
+          <!-- <div><span class="dot dot-indigo"></span> Offline sales</div>
           <div><span class="dot dot-yellow"></span> Online sales</div>
-          <div><span class="dot dot-indigo-light"></span> Returns</div>
+          <div><span class="dot dot-indigo-light"></span> Returns</div> -->
 
         </aside>
       </section>
@@ -1325,10 +1327,10 @@
       );
       renderChart(
         ctx3,
-        'pie',
+        'doughnut',
         ['January', 'February', 'March', 'April', 'May', 'June'],
         [5, 1, 15, 2, 35, 30],
-        ['#4338ca', '#facc15'],
+        ['#007bff', '#28a745', '#ffc107', '#dc3545', '#17a2b8', '#6f42c1'],
         'Growth Chart'
       );
 
