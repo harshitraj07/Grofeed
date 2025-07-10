@@ -16,17 +16,19 @@
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
-body {
+
+    body {
       background: linear-gradient(to Right, #f0f4ff, #e0e7ff);
 
     }
-   .mainContainer {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    overflow: hidden;
 
-}
+    .mainContainer {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      overflow: hidden;
+
+    }
 
     .sidebar {
       margin-top: 80px;
@@ -84,30 +86,29 @@ body {
 
     /* Base styles */
     .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 20px;
-  background-color: #ffffff;
-  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
-  position: fixed;
-  width: 100vw;
-  top: 0;
-  z-index: 1000;
-  /* margin-left: -20px; */
-  
-  /* border-radius: 30px; */
-}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background-color: #ffffff;
+      /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+      position: fixed;
+      width: 100vw;
+      top: 0;
+      z-index: 1000;
+      /* margin-left: -20px; */
+
+      /* border-radius: 30px; */
+    }
 
 
     .header-left {
       display: flex;
       align-items: center;
-      gap: 12px;
     }
 
     .companylogo {
-      height: 40px;
+      height: 60px;
       width: auto;
       object-fit: contain;
     }
@@ -142,10 +143,8 @@ body {
         gap: 12px;
       }
 
-      .header-left,
       .profile {
         width: 100%;
-        justify-content: space-between;
       }
 
       .creatorName {
@@ -163,7 +162,7 @@ body {
       }
 
       .companylogo {
-        height: 32px;
+        height: 50px;
       }
 
       .Creator-profile {
@@ -764,11 +763,9 @@ body {
 
       .sidebar ul {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        width: 100%;
-        padding: 0;
-        margin: 0;
+        flex-direction: column;
+
+
       }
 
       .sidebar ul li {
@@ -843,7 +840,7 @@ body {
     .menu-toggle {
       /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 
-     
+
       background-color: #fff;
       color: #000;
       padding: 15px;
@@ -943,285 +940,287 @@ body {
 </head>
 
 <body>
- <div class="header">
-      <div class="header-left">
-    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+  <div class="header">
+    <div class="header-left">
 
-        <img class="companylogo" src="https://i.postimg.cc/Y2Rmq9zQ/companylogo.webp" alt="">
-      </div>
+      <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+      <img class="companylogo" src="https://i.postimg.cc/Y2Rmq9zQ/companylogo.webp" alt="">
 
-
-      <div class="profile">
-
-        <img class="Creator-profile" src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt="">
-
-        <span>🔔</span>
-
-      </div>
     </div>
-<div class="mainContainer">
-  <div class="sidebar" id="sidebar">
-    <ul class="sidebar-menu">
-                <li><a href="index.html"><img src="https://i.postimg.cc/c4JtKSF2/dashboard.png" alt=""><span
-                            class="menu-text">Dashboard</span></a>
-                </li>
-                <li><a href="product.html"><img src="https://i.postimg.cc/T1NwjKtS/product.png" alt=""><span
-                            class="menu-text">Products</span> </a></li>
-                <li><a href="orderList.html"><img src="https://i.postimg.cc/QCdCWQJ1/orderlist.png" alt=""><span
-                            class="menu-text">Order List</span> </a></li>
-                <li><a href="beneficiary.html"><img src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt=""><span
-                            class="menu-text">Beneficiary</span> </a></li>
-                <li><a href="coinsWallet.html"><img src="https://i.postimg.cc/mkLzyfBc/coins-Wallet.png" alt=""> <span
-                            class="menu-text">Coins Wallet</span></a></li>
-                <li><a href="connectFeed.html"><img src="https://i.postimg.cc/4NF7VSMd/connectfeed.png" alt=""> <span
-                            class="menu-text">ConnectFeed</span></a></li>
-                <li><a href="Integration.html"><img src="https://i.postimg.cc/vZg1zvFv/integration.png" alt=""><span
-                            class="menu-text">Integration</span> </a></li>
-                <li><a href="leadLinkWay.html"><img src="https://i.postimg.cc/hGVXFPGz/leadlinkway.png" alt=""> <span
-                            class="menu-text">LeadLinkWay</span></a></li>
-                <li><a href="academy.html"><img src="https://i.postimg.cc/hjbQmPWW/academy.png" alt=""><span
-                            class="menu-text">Academy</span> </a></li>
-                <li><a href="setting.html"><img src="https://i.postimg.cc/CxX8TQHt/settings-1.png" alt=""><span
-                            class="menu-text">Setting</span> </a></li>
 
-            </ul>
+
+    <div class="profile">
+
+      <img class="Creator-profile" src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt="">
+
+      <span>🔔</span>
+
+    </div>
   </div>
-  
-   
-  <div class="main">
-          <div class="creatorName">Welcome, Amit 👋</div>
+  <div class="mainContainer">
+    <div class="sidebar" id="sidebar">
+      <ul class="sidebar-menu">
+        <li><a href="index.html"><img src="https://i.postimg.cc/c4JtKSF2/dashboard.png" alt=""><span
+              class="menu-text">Dashboard</span></a>
+        </li>
+        <li><a href="product.html"><img src="https://i.postimg.cc/T1NwjKtS/product.png" alt=""><span
+              class="menu-text">Products</span> </a></li>
+        <li><a href="orderList.html"><img src="https://i.postimg.cc/QCdCWQJ1/orderlist.png" alt=""><span
+              class="menu-text">Order List</span> </a></li>
+        <li><a href="beneficiary.html"><img src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt=""><span
+              class="menu-text">Beneficiary</span> </a></li>
+        <li><a href="coinsWallet.html"><img src="https://i.postimg.cc/mkLzyfBc/coins-Wallet.png" alt=""> <span
+              class="menu-text">Coins Wallet</span></a></li>
+        <li><a href="connectFeed.html"><img src="https://i.postimg.cc/4NF7VSMd/connectfeed.png" alt=""> <span
+              class="menu-text">ConnectFeed</span></a></li>
+        <li><a href="Integration.html"><img src="https://i.postimg.cc/vZg1zvFv/integration.png" alt=""><span
+              class="menu-text">Integration</span> </a></li>
+        <li><a href="leadLinkWay.html"><img src="https://i.postimg.cc/hGVXFPGz/leadlinkway.png" alt=""> <span
+              class="menu-text">LeadLinkWay</span></a></li>
+        <li><a href="academy.html"><img src="https://i.postimg.cc/hjbQmPWW/academy.png" alt=""><span
+              class="menu-text">Academy</span> </a></li>
+        <li><a href="setting.html"><img src="https://i.postimg.cc/CxX8TQHt/settings-1.png" alt=""><span
+              class="menu-text">Setting</span> </a></li>
 
-    <section>
-      <div class="section1">
-        <div class="climateContainer">
-          <div class="climateBox"> <img
-              src="https://demo.bootstrapdash.com/skydash/themes/assets/images/dashboard/people.svg" alt=""></div>
+      </ul>
+    </div>
+
+
+    <div class="main">
+      <div class="creatorName">Welcome, Amit 👋</div>
+
+      <section>
+        <div class="section1">
+          <div class="climateContainer">
+            <div class="climateBox"> <img
+                src="https://demo.bootstrapdash.com/skydash/themes/assets/images/dashboard/people.svg" alt=""></div>
+          </div>
+          <div class="boxes income-stats">
+            <div class="box box1">
+              <div class="box-content" style="font-size: medium;">Today’s Earning</div>
+              <div class="box-content" style="font-size: x-large;" id="todayCoi">4006</div>
+              <div class="box-content" style="font-size: large;">10.00% (30 days)</div>
+            </div>
+            <div class="box box2">
+              <div class="box-content" style="font-size: medium;">Yesterday’s Earning</div>
+              <div class="box-content" style="font-size: x-large;" id="yesterdayCoin">61344</div>
+              <div class="box-content" style="font-size: large;">22.00% (30 days)</div>
+            </div>
+            <div class="box box3">
+              <div class="box-content" style="font-size: medium;">This Month’s Earning</div>
+              <div class="box-content" style="font-size: x-large;" id="monthCoin">34040</div>
+              <div class="box-content" style="font-size: large;">2.00% (30 days)</div>
+            </div>
+            <div class="box box4">
+              <div class="box-content" style="font-size: medium;">This Year’s Earning</div>
+              <div class="box-content" style="font-size: x-large;" id="yearCoin">37033</div>
+              <div class="box-content" style="font-size: large;">0.22% (30 days)</div>
+            </div>
+
+          </div>
         </div>
-        <div class="boxes income-stats">
-          <div class="box box1">
-            <div class="box-content" style="font-size: medium;">Today’s Earning</div>
-            <div class="box-content" style="font-size: x-large;" id="todayCoi">4006</div>
-            <div class="box-content" style="font-size: large;">10.00% (30 days)</div>
-          </div>
-          <div class="box box2">
-            <div class="box-content" style="font-size: medium;">Yesterday’s Earning</div>
-            <div class="box-content" style="font-size: x-large;" id="yesterdayCoin">61344</div>
-            <div class="box-content" style="font-size: large;">22.00% (30 days)</div>
-          </div>
-          <div class="box box3">
-            <div class="box-content" style="font-size: medium;">This Month’s Earning</div>
-            <div class="box-content" style="font-size: x-large;" id="monthCoin">34040</div>
-            <div class="box-content" style="font-size: large;">2.00% (30 days)</div>
-          </div>
-          <div class="box box4">
-            <div class="box-content" style="font-size: medium;">This Year’s Earning</div>
-            <div class="box-content" style="font-size: x-large;" id="yearCoin">37033</div>
-            <div class="box-content" style="font-size: large;">0.22% (30 days)</div>
-          </div>
+      </section>
+
+
+
+
+      <div class="charts-wrapper">
+        <div class="chart">
+          <article class="order-card">
+            <h2>Order Details</h2>
+            <p class="description">
+              The total number of sessions within the date range. It is the period time a user is actively engaged with
+              your website, page or app, etc.
+            </p>
+
+            <div class="order-grid">
+              <div class="order-item">
+                <p class="label">Order Value</p>
+                <p class="value">12.3k</p>
+              </div>
+              <div class="order-item">
+                <p class="label">Orders</p>
+                <p class="value">14k</p>
+              </div>
+              <div class="order-item">
+                <p class="label">Users</p>
+                <p class="value">71.56%</p>
+              </div>
+              <div class="order-item">
+                <p class="label">Downloads</p>
+                <p class="value">34040</p>
+              </div>
+            </div>
+            <div class="chart1"> <canvas id="salesChart"></canvas></div>
+
+          </article>
+          <article class="order-card">
+            <h2>Sales Report</h2>
+            <p class="description">
+              The total number of sessions within the date range. It is the period time a user is actively engaged with
+              your website, page or app, etc
+            </p>
+            <div><span class="dot dot-indigo"></span> Offline sales</div>
+            <div><span class="dot dot-yellow"></span> Online sales</div>
+            <div class="order-grid">
+
+
+
+
+            </div>
+            <div class="chart2"> <canvas id="salesChart2"></canvas> </div>
+
+          </article>
 
         </div>
       </div>
-    </section>
 
-
-
-
-    <div class="charts-wrapper">
-      <div class="chart">
-        <article class="order-card">
-          <h2>Order Details</h2>
-          <p class="description">
+      <section class="sales-overview">
+        <div class="sales-region">
+          <p class="sales-amount">$34040</p>
+          <p class="sales-region-name">North America</p>
+          <p class="sales-description">
             The total number of sessions within the date range. It is the period time a user is actively engaged with
-            your website, page or app, etc.
+            your
+            website, page or app, etc.
           </p>
+        </div>
 
-          <div class="order-grid">
-            <div class="order-item">
-              <p class="label">Order Value</p>
-              <p class="value">12.3k</p>
+        <div class="sales-bars">
+          <div class="progress-row">
+            <span>Illinois</span>
+            <div class="progress-track">
+              <div class="progress-fill fill-indigo" style="width: 60%;height: 100%;"></div>
             </div>
-            <div class="order-item">
-              <p class="label">Orders</p>
-              <p class="value">14k</p>
-            </div>
-            <div class="order-item">
-              <p class="label">Users</p>
-              <p class="value">71.56%</p>
-            </div>
-            <div class="order-item">
-              <p class="label">Downloads</p>
-              <p class="value">34040</p>
-            </div>
+            <span>713</span>
           </div>
-          <div class="chart1"> <canvas id="salesChart"></canvas></div>
 
-        </article>
-        <article class="order-card">
-          <h2>Sales Report</h2>
-          <p class="description">
-            The total number of sessions within the date range. It is the period time a user is actively engaged with
-            your website, page or app, etc
-          </p>
+          <div class="progress-row">
+            <span>Washington</span>
+            <div class="progress-track bg-yellow">
+              <div class="progress-fill fill-yellow" style="width: 50%;height: 100%;"></div>
+            </div>
+            <span>583</span>
+          </div>
+
+          <div class="progress-row">
+            <span>Mississippi</span>
+            <div class="progress-track bg-red">
+              <div class="progress-fill fill-red" style="width: 70%; height: 100%;"></div>
+            </div>
+            <span>924</span>
+          </div>
+
+          <div class="progress-row">
+            <span>California</span>
+            <div class="progress-track">
+              <div class="progress-fill fill-indigo-light" style="width: 55%; height: 100%;"></div>
+            </div>
+            <span>664</span>
+          </div>
+
+          <div class="progress-row">
+            <span>Maryland</span>
+            <div class="progress-track">
+              <div class="progress-fill fill-indigo" style="width: 50%; height: 100%;"></div>
+            </div>
+            <span>560</span>
+          </div>
+
+          <div class="progress-row">
+            <span>Alaska</span>
+            <div class="progress-track bg-red">
+              <div class="progress-fill fill-red" style="width: 60%;height: 100%;"></div>
+            </div>
+            <span>793</span>
+          </div>
+        </div>
+
+        <aside class="sales-legend">
+          <div class="chart3"> <canvas id="salesChart3"></canvas> </div>
+
+
           <div><span class="dot dot-indigo"></span> Offline sales</div>
           <div><span class="dot dot-yellow"></span> Online sales</div>
-          <div class="order-grid">
+          <div><span class="dot dot-indigo-light"></span> Returns</div>
+
+        </aside>
+      </section>
 
 
-
-
-          </div>
-          <div class="chart2"> <canvas id="salesChart2"></canvas> </div>
-
-        </article>
-
+      <div class="table-section">
+        <h4>Table Section</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Payment Mode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Order #1</td>
+              <td>Complete</td>
+              <td>2025-06-30</td>
+              <td>200</td>
+              <td>upi</td>
+            </tr>
+            <tr>
+              <td>Order #2</td>
+              <td>Pending</td>
+              <td>2025-06-28</td>
+              <td>400</td>
+              <td>credit card</td>
+            </tr>
+            <tr>
+              <td>Order #3</td>
+              <td>Pending</td>
+              <td>2025-06-28</td>
+              <td>600</td>
+              <td>debit card</td>
+            </tr>
+            <tr>
+              <td>Order #4</td>
+              <td>Pending</td>
+              <td>2025-06-28</td>
+              <td>500</td>
+              <td>upi</td>
+            </tr>
+            <tr>
+              <td>Order #5</td>
+              <td>Pending</td>
+              <td>2025-06-28</td>
+              <td>700</td>
+              <td>debit card</td>
+            </tr>
+            <tr>
+              <td>Order #6</td>
+              <td>Pending</td>
+              <td>2025-06-28</td>
+              <td>200</td>
+              <td>upi</td>
+            </tr>
+            <tr>
+              <td>Order #7</td>
+              <td>Pending</td>
+              <td>2025-06-28</td>
+              <td>200</td>
+              <td>upi</td>
+            </tr>
+            <tr>
+              <td>Order #8</td>
+              <td>Pending</td>
+              <td>2025-06-28</td>
+              <td>200</td>
+              <td>upi</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-
-    <section class="sales-overview">
-      <div class="sales-region">
-        <p class="sales-amount">$34040</p>
-        <p class="sales-region-name">North America</p>
-        <p class="sales-description">
-          The total number of sessions within the date range. It is the period time a user is actively engaged with your
-          website, page or app, etc.
-        </p>
-      </div>
-
-      <div class="sales-bars">
-        <div class="progress-row">
-          <span>Illinois</span>
-          <div class="progress-track">
-            <div class="progress-fill fill-indigo" style="width: 60%;height: 100%;"></div>
-          </div>
-          <span>713</span>
-        </div>
-
-        <div class="progress-row">
-          <span>Washington</span>
-          <div class="progress-track bg-yellow">
-            <div class="progress-fill fill-yellow" style="width: 50%;height: 100%;"></div>
-          </div>
-          <span>583</span>
-        </div>
-
-        <div class="progress-row">
-          <span>Mississippi</span>
-          <div class="progress-track bg-red">
-            <div class="progress-fill fill-red" style="width: 70%; height: 100%;"></div>
-          </div>
-          <span>924</span>
-        </div>
-
-        <div class="progress-row">
-          <span>California</span>
-          <div class="progress-track">
-            <div class="progress-fill fill-indigo-light" style="width: 55%; height: 100%;"></div>
-          </div>
-          <span>664</span>
-        </div>
-
-        <div class="progress-row">
-          <span>Maryland</span>
-          <div class="progress-track">
-            <div class="progress-fill fill-indigo" style="width: 50%; height: 100%;"></div>
-          </div>
-          <span>560</span>
-        </div>
-
-        <div class="progress-row">
-          <span>Alaska</span>
-          <div class="progress-track bg-red">
-            <div class="progress-fill fill-red" style="width: 60%;height: 100%;"></div>
-          </div>
-          <span>793</span>
-        </div>
-      </div>
-
-      <aside class="sales-legend">
-        <div class="chart3"> <canvas id="salesChart3"></canvas> </div>
-
-
-        <div><span class="dot dot-indigo"></span> Offline sales</div>
-        <div><span class="dot dot-yellow"></span> Online sales</div>
-        <div><span class="dot dot-indigo-light"></span> Returns</div>
-
-      </aside>
-    </section>
-
-
-    <div class="table-section">
-      <h4>Table Section</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>Product Name</th>
-            <th>Status</th>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>Payment Mode</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Order #1</td>
-            <td>Complete</td>
-            <td>2025-06-30</td>
-            <td>200</td>
-            <td>upi</td>
-          </tr>
-          <tr>
-            <td>Order #2</td>
-            <td>Pending</td>
-            <td>2025-06-28</td>
-            <td>400</td>
-            <td>credit card</td>
-          </tr>
-          <tr>
-            <td>Order #3</td>
-            <td>Pending</td>
-            <td>2025-06-28</td>
-            <td>600</td>
-            <td>debit card</td>
-          </tr>
-          <tr>
-            <td>Order #4</td>
-            <td>Pending</td>
-            <td>2025-06-28</td>
-            <td>500</td>
-            <td>upi</td>
-          </tr>
-          <tr>
-            <td>Order #5</td>
-            <td>Pending</td>
-            <td>2025-06-28</td>
-            <td>700</td>
-            <td>debit card</td>
-          </tr>
-          <tr>
-            <td>Order #6</td>
-            <td>Pending</td>
-            <td>2025-06-28</td>
-            <td>200</td>
-            <td>upi</td>
-          </tr>
-          <tr>
-            <td>Order #7</td>
-            <td>Pending</td>
-            <td>2025-06-28</td>
-            <td>200</td>
-            <td>upi</td>
-          </tr>
-          <tr>
-            <td>Order #8</td>
-            <td>Pending</td>
-            <td>2025-06-28</td>
-            <td>200</td>
-            <td>upi</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

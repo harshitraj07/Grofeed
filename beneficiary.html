@@ -151,11 +151,10 @@
     .header-left {
       display: flex;
       align-items: center;
-      gap: 12px;
     }
 
     .companylogo {
-      height: 40px;
+      height: 60px;
       width: auto;
       object-fit: contain;
     }
@@ -220,7 +219,6 @@
         gap: 12px;
       }
 
-      .header-left,
       .profile {
         width: 100%;
         justify-content: space-between;
@@ -256,11 +254,9 @@
 
       .sidebar ul {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        width: 100%;
-        padding: 0;
-        margin: 0;
+        flex-direction: column;
+
+
       }
 
       .sidebar ul li {
@@ -272,7 +268,7 @@
       }
 
       .companylogo {
-        height: 32px;
+        height: 50px;
       }
 
       .Creator-profile {
@@ -444,6 +440,70 @@
       font-size: 16px;
     }
 
+    /* Overlay background */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      /* Faded background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    /* Form container */
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 20rem;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      position: relative;
+    }
+
+    #beneficiaryForm {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+    }
+
+    .form-container form input {
+      width: 100%;
+
+      padding: 10px;
+      outline: 0;
+      border: 1px solid rgba(105, 105, 105, 0.397);
+      border-radius: 10px;
+
+    }
+
+    .form-container button.save-btn {
+      border: none;
+      outline: none;
+      background-color: royalblue;
+      padding: 10px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      transform: .3s ease;
+    }
+
+    .form-container button.save-btn :hover {
+      background-color: rgb(56, 90, 194);
+      cursor: pointer;
+
+    }
+
+
+
     .toggle-buttons {
       display: flex;
       justify-content: center;
@@ -557,30 +617,30 @@
   </div>
   <div class="mainContainer">
     <div class="sidebar" id="sidebar">
-  <ul class="sidebar-menu">
-                <li><a href="index.html"><img src="https://i.postimg.cc/c4JtKSF2/dashboard.png" alt=""><span
-                            class="menu-text">Dashboard</span></a>
-                </li>
-                <li><a href="product.html"><img src="https://i.postimg.cc/T1NwjKtS/product.png" alt=""><span
-                            class="menu-text">Products</span> </a></li>
-                <li><a href="orderList.html"><img src="https://i.postimg.cc/QCdCWQJ1/orderlist.png" alt=""><span
-                            class="menu-text">Order List</span> </a></li>
-                <li><a href="beneficiary.html"><img src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt=""><span
-                            class="menu-text">Beneficiary</span> </a></li>
-                <li><a href="coinsWallet.html"><img src="https://i.postimg.cc/mkLzyfBc/coins-Wallet.png" alt=""> <span
-                            class="menu-text">Coins Wallet</span></a></li>
-                <li><a href="connectFeed.html"><img src="https://i.postimg.cc/4NF7VSMd/connectfeed.png" alt=""> <span
-                            class="menu-text">ConnectFeed</span></a></li>
-                <li><a href="Integration.html"><img src="https://i.postimg.cc/vZg1zvFv/integration.png" alt=""><span
-                            class="menu-text">Integration</span> </a></li>
-                <li><a href="leadLinkWay.html"><img src="https://i.postimg.cc/hGVXFPGz/leadlinkway.png" alt=""> <span
-                            class="menu-text">LeadLinkWay</span></a></li>
-                <li><a href="academy.html"><img src="https://i.postimg.cc/hjbQmPWW/academy.png" alt=""><span
-                            class="menu-text">Academy</span> </a></li>
-                <li><a href="setting.html"><img src="https://i.postimg.cc/CxX8TQHt/settings-1.png" alt=""><span
-                            class="menu-text">Setting</span> </a></li>
+      <ul class="sidebar-menu">
+        <li><a href="index.html"><img src="https://i.postimg.cc/c4JtKSF2/dashboard.png" alt=""><span
+              class="menu-text">Dashboard</span></a>
+        </li>
+        <li><a href="product.html"><img src="https://i.postimg.cc/T1NwjKtS/product.png" alt=""><span
+              class="menu-text">Products</span> </a></li>
+        <li><a href="orderList.html"><img src="https://i.postimg.cc/QCdCWQJ1/orderlist.png" alt=""><span
+              class="menu-text">Order List</span> </a></li>
+        <li><a href="beneficiary.html"><img src="https://i.postimg.cc/7hKCBsZK/beneficiary.png" alt=""><span
+              class="menu-text">Beneficiary</span> </a></li>
+        <li><a href="coinsWallet.html"><img src="https://i.postimg.cc/mkLzyfBc/coins-Wallet.png" alt=""> <span
+              class="menu-text">Coins Wallet</span></a></li>
+        <li><a href="connectFeed.html"><img src="https://i.postimg.cc/4NF7VSMd/connectfeed.png" alt=""> <span
+              class="menu-text">ConnectFeed</span></a></li>
+        <li><a href="Integration.html"><img src="https://i.postimg.cc/vZg1zvFv/integration.png" alt=""><span
+              class="menu-text">Integration</span> </a></li>
+        <li><a href="leadLinkWay.html"><img src="https://i.postimg.cc/hGVXFPGz/leadlinkway.png" alt=""> <span
+              class="menu-text">LeadLinkWay</span></a></li>
+        <li><a href="academy.html"><img src="https://i.postimg.cc/hjbQmPWW/academy.png" alt=""><span
+              class="menu-text">Academy</span> </a></li>
+        <li><a href="setting.html"><img src="https://i.postimg.cc/CxX8TQHt/settings-1.png" alt=""><span
+              class="menu-text">Setting</span> </a></li>
 
-            </ul>
+      </ul>
     </div>
 
 
@@ -637,6 +697,21 @@
         </table>
       </div>
 
+    </div>
+    <!-- Overlay + Form -->
+    <div id="formOverlay" class="overlay" style="display:none;">
+      <div class="form-container">
+        <h3>Add New Beneficiary</h3>
+        <form id="beneficiaryForm" onsubmit="addNew(event)">
+          <input type="text" id="newId" placeholder="ID" required />
+          <input type="text" id="newName" placeholder="Name" required />
+          <input type="date" id="newDate" required />
+          <input type="tel" id="newPhone" placeholder="Phone" required />
+          <input type="text" id="newUpi" placeholder="UPI" required />
+          <input type="text" id="newAccount" placeholder="Account No." required />
+          <button type="submit" class="save-btn">Save</button>
+        </form>
+      </div>
     </div>
 
   </div>
@@ -742,22 +817,13 @@
     }
 
     function showAddForm() {
-      tableBody.insertAdjacentHTML('afterbegin', `
-        <tr id="addRow">
-          <td><input type="text" id="newId" placeholder="ID" /></td>
-          <td><input type="text" id="newName" placeholder="Name" /></td>
-          <td><input type="date" id="newDate" /></td>
-          <td><input type="tel" id="newPhone" placeholder="Phone" /></td>
-          <td><input type="text" id="newUpi" placeholder="UPI" /></td>
-          <td><input type="text" id="newAccount" placeholder="Account" /></td>
-          <td>
-            <button class="save-btn" onclick="addNew()">Save</button>
-          </td>
-        </tr>
-      `);
+      document.getElementById("formOverlay").style.display = "flex";
     }
 
-    function addNew() {
+
+    function addNew(event) {
+      event.preventDefault();
+
       const newRow = {
         id: document.getElementById("newId").value,
         name: document.getElementById("newName").value,
@@ -766,11 +832,26 @@
         upi: document.getElementById("newUpi").value,
         account: document.getElementById("newAccount").value
       };
+
       if (currentType === "influencer") influencerData.unshift(newRow);
       else sellerData.unshift(newRow);
+
       renderTable(currentType === "influencer" ? influencerData : sellerData);
       updateSummaryBoxes();
+
+      // Close form
+      document.getElementById("formOverlay").style.display = "none";
+      document.getElementById("beneficiaryForm").reset();
     }
+
+    // Close form if clicked on overlay background
+    document.getElementById("formOverlay").addEventListener("click", function (e) {
+      if (e.target === this) {
+        this.style.display = "none";
+      }
+    });
+
+
 
     function editRow(index) {
       const data = currentType === "influencer" ? influencerData : sellerData;
