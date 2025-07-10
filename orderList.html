@@ -384,13 +384,16 @@
     }
 
     .card h4 {
-      font-size: 1rem;
+      font-size: large;
+      color:#666 ;
       margin-bottom: 0.3rem;
       opacity: 0.9;
     }
 
     .card p {
-      font-size: 1.3rem;
+      font-size: x-large;
+      font-weight: bold;
+      color: #4F87BC;
       /* font-weight: bold; */
       margin: 0;
     }
@@ -401,10 +404,9 @@
       flex-wrap: wrap;
       gap: 15px;
       margin-bottom: 20px;
-      background: #fff;
+      /* background: #fff; */
       padding: 15px;
       border-radius: 8px;
-      box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
     }
 
     .filter-section input,
@@ -442,8 +444,10 @@
     }
 
     thead {
-      background: #f1f1f1;
-      color: #000;
+      background: #4F87BC;
+            box-shadow: #000000 0px 0px 6px;
+
+      color: #fff;
       /* background: linear-gradient(to bottom, #fff, #dbefff);
       color: #000; */
     }
@@ -732,7 +736,6 @@
       { label: 'Completed Orders', value: orderStats.completedOrders, class: 'completed' },
       { label: 'Pending Orders', value: orderStats.pendingOrders, class: 'pending' },
       { label: 'Cancelled Orders', value: orderStats.cancelledOrders, class: 'cancelled' },
-      { label: 'Total Revenue', value: '₹' + orderStats.totalRevenue.toLocaleString(), class: 'revenue' }
     ];
 
     const summaryContainer = document.getElementById('orderSummary');
