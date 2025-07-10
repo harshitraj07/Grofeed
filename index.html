@@ -620,7 +620,11 @@
       border-bottom: 1px solid #ddd;
     }
 
-    
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
 
     /* Responsive styles */
     @media (max-width: 1024px) {
@@ -746,7 +750,7 @@
         margin-bottom: 15px;
       }
 
-      */
+      
 
       /* .sidebar{
         display: none;
@@ -759,6 +763,11 @@
       .main {
         margin-left: 0px;
         padding-left: 0px;
+      }
+      th,
+      td {
+        padding: 10px 12px;
+        font-size: 14px;
       }
     }
 
@@ -826,17 +835,10 @@
       }
 
 
-      th,
-      td {
-        font-size: 12px;
-        padding: 5px;
-      }
+     
 
 
-      .table-section {
-
-        padding: 10px;
-      }
+      
 
 
 
