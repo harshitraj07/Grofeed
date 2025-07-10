@@ -485,22 +485,22 @@
 
     }
 
-    .form-container button.save-btn {
-      border: none;
-      outline: none;
-      background-color: royalblue;
-      padding: 10px;
-      border-radius: 10px;
-      color: #fff;
-      font-size: 16px;
-      transform: .3s ease;
-    }
+    .form-container form button.save-btn {
+  border: none;
+  outline: none;
+  background: linear-gradient(90deg, #FF6B6B 14.9%, #FF8E53 84.62%);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
 
-    .form-container button.save-btn :hover {
-      background-color: rgb(56, 90, 194);
-      cursor: pointer;
+.form-container button.save-btn:hover {
+  transform: scale(1.03);
+}
 
-    }
 
 
 
@@ -853,28 +853,32 @@
 
 
 
-    function editRow(index) {
-      const data = currentType === "influencer" ? influencerData : sellerData;
-      const row = tableBody.rows[index];
-      const item = data[index];
+   function editRow(index) {
+  const data = currentType === "influencer" ? influencerData : sellerData;
+  const row = tableBody.rows[index];
+  const item = data[index];
 
-      row.innerHTML = `
-        <td><input value="${item.id}" /></td>
-        <td><input value="${item.name}" /></td>
-        <td><input type="date" value="${item.date}" /></td>
-        <td><input value="${item.phone}" /></td>
-        <td><input value="${item.upi}" /></td>
-        <td><input value="${item.account}" /></td>
-        <td><button class="save-btn" onclick="saveEdit(${index})">Save</button></td>
-      `;
-    }
+  const editableInputStyle = 'style="padding: 6px 8px; border: 1px solid #ccc; border-radius: 6px; width: 100%;"';
+
+  row.innerHTML = `
+    <td><input value="${item.id}" disabled style="border: none; background: transparent; font-weight: 600;" /></td>
+    <td><input value="${item.name}" ${editableInputStyle} /></td>
+    <td><input type="date" value="${item.date}" ${editableInputStyle} /></td>
+    <td><input value="${item.phone}" ${editableInputStyle} /></td>
+    <td><input value="${item.upi}" ${editableInputStyle} /></td>
+    <td><input value="${item.account}" ${editableInputStyle} /></td>
+    <td><button class="save-btn" onclick="saveEdit(${index})">Save</button></td>
+  `;
+}
+
+
 
     function saveEdit(index) {
       const row = tableBody.rows[index];
       const inputs = row.querySelectorAll('input');
 
       const newData = {
-        id: inputs[0].value,
+        id: currentType === "influencer" ? influencerData[index].id : sellerData[index].id, // preserve original ID
         name: inputs[1].value,
         date: inputs[2].value,
         phone: inputs[3].value,
